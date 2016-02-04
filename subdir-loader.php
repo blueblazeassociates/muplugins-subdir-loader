@@ -22,12 +22,6 @@ class CTLT_Load_MU_Plugins_In_SubDir {
 
   /**
    * Set up our actions and filters
-   *
-   * @author Richard Tape <@richardtape>
-   * @package CTLT_Load_MU_Plugins_In_SubDir
-   * @since 1.0
-   * @param null
-   * @return null
    */
   public function __construct() {
     // Load the plugins
@@ -41,11 +35,7 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    * Will clear cache when visiting the plugin page in /wp-admin/.
    * Will also clear cache if a previously detected mu-plugin was deleted.
    *
-   * @author Richard Tape <@richardtape>
-   * @package CTLT_Load_MU_Plugins_In_SubDir
-   * @since 1.0
-   * @param null
-   * @return (array) $plugins - an array of plugins in sub directories in the WPMU plugins dir
+   * @return array $plugins - an array of plugins in sub directories in the WPMU plugins dir
    */
   public static function WPMUPluginFilesInSubDirs() {
     // Do we have a pre-existing cache of the plugins? This checks in %prefix%_sitemeta
@@ -90,12 +80,6 @@ class CTLT_Load_MU_Plugins_In_SubDir {
   /**
    * Delete the transient if we're on an individual site's plugins page
    * Require each of the MU plugins
-   *
-   * @author Richard Tape <@richardtape>
-   * @package CTLT_Load_MU_Plugins_In_SubDir
-   * @since 1.0
-   * @param null
-   * @return null
    */
   public function muplugins_loaded__requirePlugins() {
     // delete cache when viewing the plugins page in the dashboard
@@ -112,12 +96,6 @@ class CTLT_Load_MU_Plugins_In_SubDir {
   /**
    * Quick and dirty way to display which plugins are MU and slightly adjust their layout
    * to show which ones are subdir or not
-   *
-   * @author Richard Tape <@richardtape>
-   * @package CTLT_Load_MU_Plugins_In_SubDir
-   * @since 1.0
-   * @param null
-   * @return null
    */
   public function after_plugin_row__addRows() {
     foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
@@ -134,13 +112,11 @@ class CTLT_Load_MU_Plugins_In_SubDir {
   /**
    * Helper function to output a table row in the MU plugins list
    *
-   * @author Richard Tape <@richardtape>
-   * @package CTLT_Load_MU_Plugins_In_SubDir
-   * @since 1.0
-   * @param (string) $id - plugin ID (slug of the $name)
-   * @param (string) $name - Name of the plugin
-   * @param (string) $desc - The plugin's description
-   * @return (string) the <tr> markup for this plugin
+   * @param string $id - plugin ID (slug of the $name)
+   * @param string $name - Name of the plugin
+   * @param string $desc - The plugin's description
+   *
+   * @return string the <tr> markup for this plugin
    */
   public static function getPluginRowMarkup( $id, $name, $desc ) {
     $output = '
