@@ -119,15 +119,15 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    * @return string the <tr> markup for this plugin
    */
   public static function getPluginRowMarkup( $id, $name, $desc ) {
-    $output = '
-        <tr id="' . $id . '" class="active">
-          <th scope="row" class="check-column"></th>
-          <td class="plugin-title"><strong style="padding-left: 10px;">+&nbsp;&nbsp;' . $name . '</strong></td>
-          <td class="column-description desc">
-            <div class="plugin-description"><p>' . $desc . '</p></div>
-          </td>
-        </tr>
-    ';
+    $output = <<<HTML
+<tr id="' . $id . '" class="active">
+  <th scope="row" class="check-column"></th>
+  <td class="plugin-title"><strong style="padding-left: 10px;">+&nbsp;&nbsp;' . $name . '</strong></td>
+  <td class="column-description desc">
+    <div class="plugin-description"><p>' . $desc . '</p></div>
+  </td>
+</tr>
+HTML;
 
     return $output;
   }
