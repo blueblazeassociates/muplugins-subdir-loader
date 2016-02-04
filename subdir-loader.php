@@ -11,6 +11,9 @@ Author URI: http://ubc.ca/
 global $CTLT_Load_MU_Plugins_In_SubDir;
 $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
 
+/**
+ * @author Richard Tape <@richardtape>
+ */
 class CTLT_Load_MU_Plugins_In_SubDir {
 
   // The transient name
