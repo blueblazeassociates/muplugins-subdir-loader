@@ -8,6 +8,9 @@ Author: iamfriendly, CTLT
 Author URI: http://ubc.ca/
 */
 
+global $CTLT_Load_MU_Plugins_In_SubDir;
+$CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
+
     class CTLT_Load_MU_Plugins_In_SubDir
     {
 
@@ -193,6 +196,3 @@ Author URI: http://ubc.ca/
 
 
     }/* class CTLT_Load_MU_Plugins_In_SubDir */
-
-    global $CTLT_Load_MU_Plugins_In_SubDir;
-    $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
