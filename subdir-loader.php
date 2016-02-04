@@ -6,6 +6,7 @@ Description: Enables the loading of plugins sitting in mu-plugins (as folders)
 Version: 0.1
 Author: iamfriendly, CTLT
 Author URI: http://ubc.ca/
+License: GPL v2 or later
 */
 
 global $CTLT_Load_MU_Plugins_In_SubDir;
