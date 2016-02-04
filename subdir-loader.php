@@ -11,8 +11,7 @@ Author URI: http://ubc.ca/
 global $CTLT_Load_MU_Plugins_In_SubDir;
 $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
 
-    class CTLT_Load_MU_Plugins_In_SubDir
-    {
+    class CTLT_Load_MU_Plugins_In_SubDir {
 
         // The transient name
         static $transientName = 'mu_plugins_in_sub_dir';
@@ -26,18 +25,13 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
          * @param null
          * @return null
          */
-
-        public function __construct()
-        {
-
+        public function __construct() {
             // Load the plugins
             add_action( 'muplugins_loaded', array( $this, 'muplugins_loaded__requirePlugins' ) );
 
             // Adjust the MU plugins list table to show which plugins are MU
             add_action( 'after_plugin_row_subdir-loader.php', array( $this, 'after_plugin_row__addRows' ) );
-
         }
-
 
         /**
          * Will clear cache when visiting the plugin page in /wp-admin/.
@@ -49,36 +43,23 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
          * @param null
          * @return (array) $plugins - an array of plugins in sub directories in the WPMU plugins dir
          */
-
-        public static function WPMUPluginFilesInSubDirs()
-        {
-
+        public static function WPMUPluginFilesInSubDirs() {
             // Do we have a pre-existing cache of the plugins? This checks in %prefix%_sitemeta
             $plugins = get_site_transient( static::$transientName );
 
             // If we do have a cache, let's check the plugin still exists
-            if( $plugins !== false )
-            {
-
-                foreach( $plugins as $pluginFile )
-                {
-
-                    if( !is_readable( WPMU_PLUGIN_DIR . '/' . $pluginFile ) )
-                    {
-
+            if( $plugins !== false ) {
+                foreach( $plugins as $pluginFile ) {
+                    if( !is_readable( WPMU_PLUGIN_DIR . '/' . $pluginFile ) ) {
                         $plugins = false;
                         break;
-
                     }
-
                 }
-
             }
 
-            if( $plugins !== false ){
+            if( $plugins !== false ) {
                 return $plugins;
             }
-
 
             // Check we have access to get_plugins()
             if( !function_exists( 'get_plugins' ) ) {
@@ -88,14 +69,12 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
             // Start fresh
             $plugins = array();
 
-            foreach( get_plugins( '/../mu-plugins' ) as $pluginFile => $pluginData )
-            {
+            foreach( get_plugins( '/../mu-plugins' ) as $pluginFile => $pluginData ) {
 
                 // skip files directly at root (WP already handles these)
-                if( dirname( $pluginFile ) != '.' ){
+                if( dirname( $pluginFile ) != '.' ) {
                     $plugins[] = $pluginFile;
                 }
-
             }
 
             // OK, set the transient and...
@@ -103,7 +82,6 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
 
             // ...ship
             return $plugins;
-
         }
 
 
@@ -118,22 +96,17 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
          * @param null
          * @return null
          */
-
-        public function muplugins_loaded__requirePlugins()
-        {
-
+        public function muplugins_loaded__requirePlugins() {
             // delete cache when viewing the plugins page in the dashboard
-            if( isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], '/wp-admin/plugins.php' ) !== false ){
+            if( isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], '/wp-admin/plugins.php' ) !== false ) {
                 delete_site_transient( static::$transientName );
             }
 
             // Now load each plugin in a subdir
-            foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ){
+            foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
                 require WPMU_PLUGIN_DIR . '/' . $pluginFile;
             }
-
         }
-
 
         /**
          * Quick and dirty way to display which plugins are MU and slightly adjust their layout
@@ -145,13 +118,8 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
          * @param null
          * @return null
          */
-
-        public function after_plugin_row__addRows()
-        {
-
-            foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile )
-            {
-
+        public function after_plugin_row__addRows() {
+            foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
                 // Super stripped down version of WP_Plugins_List_Table
                 $data   = get_plugin_data( WPMU_PLUGIN_DIR . '/' . $pluginFile );
                 $name   = empty( $data['Plugin Name'] ) ? $pluginFile : $data['Plugin Name'];
@@ -159,11 +127,8 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
                 $id     = sanitize_title( $name );
 
                 echo static::getPluginRowMarkup( $id, $name, $desc );
-
             }
-
         }
-
 
         /**
          * Helper function to output a table row in the MU plugins list
@@ -176,10 +141,7 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
          * @param (string) $desc - The plugin's description
          * @return (string) the <tr> markup for this plugin
          */
-
-        public static function getPluginRowMarkup( $id, $name, $desc )
-        {
-
+        public static function getPluginRowMarkup( $id, $name, $desc ) {
             $output = '
                 <tr id="' . $id . '" class="active">
                     <th scope="row" class="check-column"></th>
@@ -191,8 +153,5 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
             ';
 
             return $output;
-
         }
-
-
     }
