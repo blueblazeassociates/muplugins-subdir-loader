@@ -63,7 +63,7 @@ class CTLT_Load_MU_Plugins_In_SubDir {
     // Start fresh
     $plugins = array();
 
-    foreach( get_plugins( '/../mu-plugins' ) as $pluginFile => $pluginData ) {
+    foreach( get_plugins( '/' . MUPLUGINDIR ) as $pluginFile => $pluginData ) {
       // skip files directly at root (WP already handles these)
       if( dirname( $pluginFile ) != '.' ) {
         $plugins[] = $pluginFile;
