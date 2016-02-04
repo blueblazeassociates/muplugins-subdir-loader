@@ -36,7 +36,7 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
             // Adjust the MU plugins list table to show which plugins are MU
             add_action( 'after_plugin_row_subdir-loader.php', array( $this, 'after_plugin_row__addRows' ) );
 
-        }/* __construct() */
+        }
 
 
         /**
@@ -104,7 +104,7 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
             // ...ship
             return $plugins;
 
-        }/* WPMUPluginFilesInSubDirs() */
+        }
 
 
 
@@ -132,7 +132,7 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
                 require WPMU_PLUGIN_DIR . '/' . $pluginFile;
             }
 
-        }/* muplugins_loaded__requirePlugins() */
+        }
 
 
         /**
@@ -162,7 +162,7 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
 
             }
 
-        }/* after_plugin_row__addRows() */
+        }
 
 
         /**
@@ -192,7 +192,7 @@ $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
 
             return $output;
 
-        }/* getPluginRowMarkup() */
+        }
 
 
-    }/* class CTLT_Load_MU_Plugins_In_SubDir */
+    }
