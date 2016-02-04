@@ -44,14 +44,14 @@ class CTLT_Load_MU_Plugins_In_SubDir {
     // If we do have a cache, let's check the plugin still exists
     if( $plugins !== false ) {
       foreach( $plugins as $pluginFile ) {
-        if( !is_readable( WPMU_PLUGIN_DIR . '/' . $pluginFile ) ) {
+        if( ! is_readable( WPMU_PLUGIN_DIR . '/' . $pluginFile ) ) {
           $plugins = false;
           break;
         }
       }
     }
 
-    if( $plugins !== false ) {
+    if( false !== $plugins ) {
       return $plugins;
     }
 
