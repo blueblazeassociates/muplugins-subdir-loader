@@ -1,14 +1,12 @@
 <?php
-
-    /**
-     * Plugin Name: MU plugins subdirectory loader
-     * Plugin URI: http://code.ctlt.ubc.ca
-     * Description: Enables the loading of plugins sitting in mu-plugins (as folders)
-     * Version: 0.1
-     * Author: iamfriendly, CTLT
-     * Author URI: http://ubc.ca/
-     *
-     */
+/*
+Plugin Name: MU plugins subdirectory loader
+Plugin URI: http://code.ctlt.ubc.ca
+Description: Enables the loading of plugins sitting in mu-plugins (as folders)
+Version: 0.1
+Author: iamfriendly, CTLT
+Author URI: http://ubc.ca/
+*/
 
     class CTLT_Load_MU_Plugins_In_SubDir
     {
