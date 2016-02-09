@@ -100,12 +100,13 @@ class CTLT_Load_MU_Plugins_In_SubDir {
   public function after_plugin_row__addRows() {
     foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
       // Super stripped down version of WP_Plugins_List_Table
-      $data   = get_plugin_data( WPMU_PLUGIN_DIR . '/' . $pluginFile, false );
-      $name   = empty( $data['Name'] ) ? $pluginFile : $data['Name'];
-      $desc   = empty( $data['Description'] ) ? '&nbsp;' : $data['Description'];
-      $id     = sanitize_title( $name );
+      $data      = get_plugin_data( WPMU_PLUGIN_DIR . '/' . $pluginFile, false );
+      $id        = sanitize_title( $name );
+      $name      = empty( $data['Name'] ) ? $pluginFile : $data['Name'];
+      $desc      = empty( $data['Description'] ) ? '' : $data['Description'];
 
-      echo static::getPluginRowMarkup( $id, $name, $desc );
+
+      print static::getPluginRowMarkup( $id, $name, $desc );
     }
   }
 
@@ -120,11 +121,13 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    */
   public static function getPluginRowMarkup( $id, $name, $desc ) {
     $output = <<<HTML
-<tr id="' . $id . '" class="active">
+<tr id="$id" class="active" data-slug="">
   <th scope="row" class="check-column"></th>
-  <td class="plugin-title"><strong style="padding-left: 10px;">+&nbsp;&nbsp;' . $name . '</strong></td>
+  <td class="plugin-title column-primary"><strong>$name</strong></td>
   <td class="column-description desc">
-    <div class="plugin-description"><p>' . $desc . '</p></div>
+    <div class="plugin-description">
+      <p>$desc</p>
+    </div>
   </td>
 </tr>
 HTML;
