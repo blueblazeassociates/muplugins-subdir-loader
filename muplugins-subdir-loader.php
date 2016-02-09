@@ -101,8 +101,8 @@ class CTLT_Load_MU_Plugins_In_SubDir {
     foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
       // Super stripped down version of WP_Plugins_List_Table
       $data      = get_plugin_data( WPMU_PLUGIN_DIR . '/' . $pluginFile, false );
-      $id        = sanitize_title( $name );
       $name      = empty( $data['Name'] ) ? $pluginFile : $data['Name'];
+      $id        = sanitize_title( $name );
       $desc      = empty( $data['Description'] ) ? '' : $data['Description'];
       $version   = empty( $data['Version'] ) ? '' : 'Version ' . $data['Version'];
       $authorURI = empty( $data['AuthorURI'] ) ? '' : $data['AuthorURI'];
