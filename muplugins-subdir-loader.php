@@ -104,9 +104,34 @@ class CTLT_Load_MU_Plugins_In_SubDir {
       $id        = sanitize_title( $name );
       $name      = empty( $data['Name'] ) ? $pluginFile : $data['Name'];
       $desc      = empty( $data['Description'] ) ? '' : $data['Description'];
+      $version   = empty( $data['Version'] ) ? '' : 'Version ' . $data['Version'];
+      $authorURI = empty( $data['AuthorURI'] ) ? '' : $data['AuthorURI'];
+      $author    = empty( $data['Author'] ) ? '' : $data['Author'];
+      $pluginURI = empty( $data['PluginURI'] ) ? '' : '<a href="' . $data['PluginURI'] . '">Visit plugin site</a>';
 
+      // Build the line of text containing version, author, and link to home page.
+      $plugin_version_author = '';
+      if ( ! empty ( $version ) ) {
+        $plugin_version_author .= $version;
+      }
+      if ( ! empty ( $author ) ) {
+        if ( ! empty ( $plugin_version_author ) ) {
+          $plugin_version_author .= ' | ';
+        }
+        if ( ! empty ( $authorURI ) ) {
+          $plugin_version_author .= '<a href="' . $authorURI . '">' . $author . '</a>';
+        } else {
+          $plugin_version_author .= $author;
+        }
+      }
+      if ( ! empty ( $pluginURI ) ) {
+        if ( ! empty ( $plugin_version_author ) ) {
+          $plugin_version_author .= ' | ';
+        }
+        $plugin_version_author .= $pluginURI;
+      }
 
-      print static::getPluginRowMarkup( $id, $name, $desc );
+      print static::getPluginRowMarkup( $id, $name, $desc, $plugin_version_author );
     }
   }
 
@@ -119,7 +144,7 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    *
    * @return string the <tr> markup for this plugin
    */
-  public static function getPluginRowMarkup( $id, $name, $desc ) {
+  public static function getPluginRowMarkup( $id, $name, $desc, $plugin_version_author ) {
     $output = <<<HTML
 <tr id="$id" class="active" data-slug="">
   <th scope="row" class="check-column"></th>
@@ -127,6 +152,9 @@ class CTLT_Load_MU_Plugins_In_SubDir {
   <td class="column-description desc">
     <div class="plugin-description">
       <p>$desc</p>
+    </div>
+    <div class="active second plugin-version-author-uri">
+      $plugin_version_author
     </div>
   </td>
 </tr>
