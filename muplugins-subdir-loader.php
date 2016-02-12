@@ -97,14 +97,16 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    * Require each of the MU plugins
    */
   public function muplugins_loaded__requirePlugins() {
-    // delete cache when viewing the plugins page in the dashboard
-    if( isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], '/wp-admin/plugins.php' ) !== false ) {
-      delete_site_transient( static::$transientName );
-    }
+    if ( $this->is_wordpress_installed() ) {
+      // delete cache when viewing the plugins page in the dashboard
+      if( isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], '/wp-admin/plugins.php' ) !== false ) {
+        delete_site_transient( static::$transientName );
+      }
 
-    // Now load each plugin in a subdir
-    foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
-      require WPMU_PLUGIN_DIR . '/' . $pluginFile;
+      // Now load each plugin in a subdir
+      foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
+        require WPMU_PLUGIN_DIR . '/' . $pluginFile;
+      }
     }
   }
 
@@ -113,40 +115,42 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    * to show which ones are subdir or not
    */
   public function after_plugin_row__addRows() {
-    foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
-      // Super stripped down version of WP_Plugins_List_Table
-      $data      = get_plugin_data( WPMU_PLUGIN_DIR . '/' . $pluginFile, false );
-      $name      = empty( $data['Name'] ) ? $pluginFile : $data['Name'];
-      $id        = sanitize_title( $name );
-      $desc      = empty( $data['Description'] ) ? '' : $data['Description'];
-      $version   = empty( $data['Version'] ) ? '' : 'Version ' . $data['Version'];
-      $authorURI = empty( $data['AuthorURI'] ) ? '' : $data['AuthorURI'];
-      $author    = empty( $data['Author'] ) ? '' : $data['Author'];
-      $pluginURI = empty( $data['PluginURI'] ) ? '' : '<a href="' . $data['PluginURI'] . '">Visit plugin site</a>';
+    if ( $this->is_wordpress_installed() ) {
+      foreach( static::WPMUPluginFilesInSubDirs() as $pluginFile ) {
+        // Super stripped down version of WP_Plugins_List_Table
+        $data      = get_plugin_data( WPMU_PLUGIN_DIR . '/' . $pluginFile, false );
+        $name      = empty( $data['Name'] ) ? $pluginFile : $data['Name'];
+        $id        = sanitize_title( $name );
+        $desc      = empty( $data['Description'] ) ? '' : $data['Description'];
+        $version   = empty( $data['Version'] ) ? '' : 'Version ' . $data['Version'];
+        $authorURI = empty( $data['AuthorURI'] ) ? '' : $data['AuthorURI'];
+        $author    = empty( $data['Author'] ) ? '' : $data['Author'];
+        $pluginURI = empty( $data['PluginURI'] ) ? '' : '<a href="' . $data['PluginURI'] . '">Visit plugin site</a>';
 
-      // Build the line of text containing version, author, and link to home page.
-      $plugin_version_author = '';
-      if ( ! empty ( $version ) ) {
-        $plugin_version_author .= $version;
-      }
-      if ( ! empty ( $author ) ) {
-        if ( ! empty ( $plugin_version_author ) ) {
-          $plugin_version_author .= ' | ';
+        // Build the line of text containing version, author, and link to home page.
+        $plugin_version_author = '';
+        if ( ! empty ( $version ) ) {
+          $plugin_version_author .= $version;
         }
-        if ( ! empty ( $authorURI ) ) {
-          $plugin_version_author .= '<a href="' . $authorURI . '">' . $author . '</a>';
-        } else {
-          $plugin_version_author .= $author;
+        if ( ! empty ( $author ) ) {
+          if ( ! empty ( $plugin_version_author ) ) {
+            $plugin_version_author .= ' | ';
+          }
+          if ( ! empty ( $authorURI ) ) {
+            $plugin_version_author .= '<a href="' . $authorURI . '">' . $author . '</a>';
+          } else {
+            $plugin_version_author .= $author;
+          }
         }
-      }
-      if ( ! empty ( $pluginURI ) ) {
-        if ( ! empty ( $plugin_version_author ) ) {
-          $plugin_version_author .= ' | ';
+        if ( ! empty ( $pluginURI ) ) {
+          if ( ! empty ( $plugin_version_author ) ) {
+            $plugin_version_author .= ' | ';
+          }
+          $plugin_version_author .= $pluginURI;
         }
-        $plugin_version_author .= $pluginURI;
-      }
 
-      print static::getPluginRowMarkup( $id, $name, $desc, $plugin_version_author );
+        print static::getPluginRowMarkup( $id, $name, $desc, $plugin_version_author );
+      }
     }
   }
 
