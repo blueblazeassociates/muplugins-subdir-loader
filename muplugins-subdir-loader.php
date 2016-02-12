@@ -3,7 +3,7 @@
 Plugin Name: MU Plugins Subdirectory Loader
 Plugin URI:  http://code.ctlt.ubc.ca
 Description: Enables the loading of plugins sitting in mu-plugins (as folders).  This plugin has to installed as a 'must-use' plugin.
-Version:     0.1.2
+Version:     0.1.3
 Author:      iamfriendly, CTLT
 Author URI:  http://ubc.ca/
 License:     GPL v2 or later
