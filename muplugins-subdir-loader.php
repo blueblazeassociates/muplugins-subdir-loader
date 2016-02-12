@@ -28,7 +28,7 @@ class CTLT_Load_MU_Plugins_In_SubDir {
     add_action( 'muplugins_loaded', array( $this, 'muplugins_loaded__requirePlugins' ) );
 
     // Adjust the MU plugins list table to show which plugins are MU
-    add_action( 'after_plugin_row', array( $this, 'after_plugin_row__addRows' ) );
+    add_action( 'after_plugin_row_muplugins-subdir-loader.php', array( $this, 'after_plugin_row__addRows' ) );
   }
 
   /**
