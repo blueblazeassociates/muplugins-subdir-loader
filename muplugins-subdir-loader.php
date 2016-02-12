@@ -32,6 +32,21 @@ class CTLT_Load_MU_Plugins_In_SubDir {
   }
 
   /**
+   * Thanks to:
+   * http://www.developersnote.net/checking-if-database-table-exists-in-wordpress/
+   */
+  public function is_wordpress_installed() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'options';
+
+    if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) != $table_name ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
    * Will clear cache when visiting the plugin page in /wp-admin/.
    * Will also clear cache if a previously detected mu-plugin was deleted.
    *
