@@ -1,22 +1,22 @@
 {
-  "name" : "blueblazeassociates/subdir-loader",
+  "name"        : "blueblazeassociates/subdir-loader",
   "description" : "MU plugins subdirectory loader.  Enables the loading of plugins sitting in mu-plugins (as folders).",
-  "type" : "wordpress-muplugin",
-  "homepage" : "https://github.com/blueblazeassociates/subdir-loader",
-  "license" : "GPL-2.0+",
+  "type"        : "wordpress-muplugin",
+  "homepage"    : "https://github.com/blueblazeassociates/subdir-loader",
+  "license"     : "GPL-2.0+",
   "authors" : [{
-    "name" : "Richard Tape",
+    "name"     : "Richard Tape",
     "homepage" : "http://richardtape.com/",
-    "role" : "Author/Creator"
+    "role"     : "Author/Creator"
   }, {
-    "name" : "Centre for Teaching, Learning and Technology",
+    "name"     : "Centre for Teaching, Learning and Technology",
     "homepage" : "http://ctlt.ubc.ca/",
-    "role" : "Author/Creator"
+    "role"     : "Author/Creator"
   }, {
-    "name" : "Ed Gifford",
+    "name"     : "Ed Gifford",
     "homepage" : "http://www.blueblazeassociates.com",
-    "role" : "Composer-fier",
-    "email" : "egifford@blueblazeassociates.com"
+    "role"     : "Composer-fier",
+    "email"    : "egifford@blueblazeassociates.com"
     }
   ],
   "keywords" : [
