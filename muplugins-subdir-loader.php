@@ -1,4 +1,12 @@
 <?php
+/**
+ * MU Plugins Subdirectory Loader
+ *
+ * @author  Blue Blaze Associates
+ * @license GPL-2.0+
+ * @link    https://github.com/blueblazeassociates/muplugins-subdir-loader
+ */
+
 /*
 Plugin Name: MU Plugins Subdirectory Loader
 Plugin URI:  http://code.ctlt.ubc.ca
