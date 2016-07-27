@@ -22,5 +22,8 @@
   "keywords" : [
   ],
   "replace": {
+  },
+  "config" : {
+    "php" : "5.6.*"
   }
 }
