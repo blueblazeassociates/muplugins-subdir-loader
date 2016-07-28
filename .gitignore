@@ -11,5 +11,5 @@
 /composer
 /composer.phar
 
-# Exclude composer managed vendor directories.
-/vendor
+# Exlude composer.lock file.
+/composer.lock
