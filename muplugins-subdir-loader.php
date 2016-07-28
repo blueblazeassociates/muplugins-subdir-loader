@@ -41,6 +41,10 @@ global $CTLT_Load_MU_Plugins_In_SubDir;
 
 // Initialize the plugin if it hasn't been.
 if ( ! isset( $CTLT_Load_MU_Plugins_In_SubDir ) ) {
+
+  // Composer autoloader.
+  require ( 'muplugins-subdir-loader__vendor/autoload.php' );
+
   // Initialize plugin class.
   $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
 }
@@ -58,9 +62,17 @@ class CTLT_Load_MU_Plugins_In_SubDir {
   private static $transientName = 'mu_plugins_in_sub_dir';
 
   /**
+   * @var \Symfony\Component\Filesystem\Filesystem
+   */
+  private $filesystem;
+  
+  /**
    * Set up our actions and filters
    */
   public function __construct() {
+    // Create a Filesystem object.
+    $this->filesystem = new \Symfony\Component\Filesystem\Filesystem();
+      
     // Load the plugins
     add_action( 'muplugins_loaded', array( $this, 'muplugins_loaded__requirePlugins' ) );
 
