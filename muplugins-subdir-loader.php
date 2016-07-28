@@ -15,6 +15,7 @@
  * Author:            Blue Blaze Associates
  * Author URI:        http://www.blueblazeassociates.com
  * License:           GPL v2 or later
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /*
