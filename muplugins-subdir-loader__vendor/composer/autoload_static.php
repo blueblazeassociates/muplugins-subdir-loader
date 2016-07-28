@@ -20,11 +20,21 @@ class ComposerStaticInit5f5f1658c99d1e905b37f8a5b3c9e264
         ),
     );
 
+    public static $classMap = array (
+        'Symfony\\Component\\Filesystem\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/filesystem/Exception/ExceptionInterface.php',
+        'Symfony\\Component\\Filesystem\\Exception\\FileNotFoundException' => __DIR__ . '/..' . '/symfony/filesystem/Exception/FileNotFoundException.php',
+        'Symfony\\Component\\Filesystem\\Exception\\IOException' => __DIR__ . '/..' . '/symfony/filesystem/Exception/IOException.php',
+        'Symfony\\Component\\Filesystem\\Exception\\IOExceptionInterface' => __DIR__ . '/..' . '/symfony/filesystem/Exception/IOExceptionInterface.php',
+        'Symfony\\Component\\Filesystem\\Filesystem' => __DIR__ . '/..' . '/symfony/filesystem/Filesystem.php',
+        'Symfony\\Component\\Filesystem\\LockHandler' => __DIR__ . '/..' . '/symfony/filesystem/LockHandler.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit5f5f1658c99d1e905b37f8a5b3c9e264::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit5f5f1658c99d1e905b37f8a5b3c9e264::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5f5f1658c99d1e905b37f8a5b3c9e264::$classMap;
 
         }, null, ClassLoader::class);
     }
