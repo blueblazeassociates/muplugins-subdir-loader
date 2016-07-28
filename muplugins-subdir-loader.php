@@ -50,8 +50,12 @@ if ( ! isset( $CTLT_Load_MU_Plugins_In_SubDir ) ) {
  */
 class CTLT_Load_MU_Plugins_In_SubDir {
 
-  // The transient name
-  static $transientName = 'mu_plugins_in_sub_dir';
+  /**
+   * The transient name
+   *
+   * @var string
+   */
+  private static $transientName = 'mu_plugins_in_sub_dir';
 
   /**
    * Set up our actions and filters
