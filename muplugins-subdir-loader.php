@@ -17,6 +17,8 @@
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.html
  * GitHub Plugin URI: https://github.com/blueblazeassociates/muplugins-subdir-loader
+ * Requires WP:       4.5
+ * Requires PHP:      5.6
  */
 
 /*
