@@ -38,7 +38,12 @@
  */
 
 global $CTLT_Load_MU_Plugins_In_SubDir;
-$CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
+
+// Initialize the plugin if it hasn't been.
+if ( ! isset( $CTLT_Load_MU_Plugins_In_SubDir ) ) {
+  // Initialize plugin class.
+  $CTLT_Load_MU_Plugins_In_SubDir = new CTLT_Load_MU_Plugins_In_SubDir();
+}
 
 /**
  * @author Richard Tape <@richardtape>
