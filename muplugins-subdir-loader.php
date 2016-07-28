@@ -65,14 +65,30 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    * @var \Symfony\Component\Filesystem\Filesystem
    */
   private $filesystem;
-  
+
+  /**
+   * Relative path to mu-plugins. This path is relative to the plugins directory.
+   *
+   * @var string
+   */
+  private $mu_plugin_dir;
+
   /**
    * Set up our actions and filters
    */
   public function __construct() {
     // Create a Filesystem object.
     $this->filesystem = new \Symfony\Component\Filesystem\Filesystem();
-      
+
+    // Discover the correct relative path for the mu-plugins directory.
+    $this->mu_plugin_dir = $this->filesystem->makePathRelative( WPMU_PLUGIN_DIR, WP_PLUGIN_DIR );
+    if ( ! $this->filesystem->isAbsolutePath( $this->mu_plugin_dir ) ) {
+      $this->mu_plugin_dir = '/' .  $this->mu_plugin_dir;
+    }
+    if ( '/' === substr( $this->mu_plugin_dir , -1) ) {
+      $this->mu_plugin_dir = rtrim( $this->mu_plugin_dir, '/' );
+    }
+
     // Load the plugins
     add_action( 'muplugins_loaded', array( $this, 'muplugins_loaded__requirePlugins' ) );
 
@@ -102,6 +118,8 @@ class CTLT_Load_MU_Plugins_In_SubDir {
    * @return array $plugins - an array of plugins in sub directories in the WPMU plugins dir
    */
   public static function WPMUPluginFilesInSubDirs() {
+    global $CTLT_Load_MU_Plugins_In_SubDir;
+
     // Do we have a pre-existing cache of the plugins? This checks in %prefix%_sitemeta
     $plugins = get_site_transient( static::$transientName );
 
@@ -127,7 +145,7 @@ class CTLT_Load_MU_Plugins_In_SubDir {
     // Start fresh
     $plugins = array();
 
-    foreach( get_plugins( '/' . MUPLUGINDIR ) as $pluginFile => $pluginData ) {
+    foreach( get_plugins( $CTLT_Load_MU_Plugins_In_SubDir->mu_plugin_dir ) as $pluginFile => $pluginData ) {
       // skip files directly at root (WP already handles these)
       if( dirname( $pluginFile ) != '.' ) {
         $plugins[] = $pluginFile;
