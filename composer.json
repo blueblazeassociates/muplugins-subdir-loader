@@ -21,7 +21,10 @@
   ],
   "keywords" : [
   ],
-  "replace": {
+  "replace" : {
+  },
+  "require" : {
+    "symfony/filesystem" : ">=2.1.0" 
   },
   "config" : {
     "php" : "5.6.*"
