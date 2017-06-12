@@ -6,10 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Symfony\\Component\\Filesystem\\Exception\\ExceptionInterface' => $vendorDir . '/symfony/filesystem/Exception/ExceptionInterface.php',
-    'Symfony\\Component\\Filesystem\\Exception\\FileNotFoundException' => $vendorDir . '/symfony/filesystem/Exception/FileNotFoundException.php',
-    'Symfony\\Component\\Filesystem\\Exception\\IOException' => $vendorDir . '/symfony/filesystem/Exception/IOException.php',
-    'Symfony\\Component\\Filesystem\\Exception\\IOExceptionInterface' => $vendorDir . '/symfony/filesystem/Exception/IOExceptionInterface.php',
-    'Symfony\\Component\\Filesystem\\Filesystem' => $vendorDir . '/symfony/filesystem/Filesystem.php',
-    'Symfony\\Component\\Filesystem\\LockHandler' => $vendorDir . '/symfony/filesystem/LockHandler.php',
 );

@@ -1,27 +1,27 @@
 [
     {
         "name": "symfony/filesystem",
-        "version": "v3.1.2",
-        "version_normalized": "3.1.2.0",
+        "version": "v3.3.2",
+        "version_normalized": "3.3.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/filesystem.git",
-            "reference": "322da5f0910d8aa0b25fa65ffccaba68dbddb890"
+            "reference": "c709670bf64721202ddbe4162846f250735842c0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/filesystem/zipball/322da5f0910d8aa0b25fa65ffccaba68dbddb890",
-            "reference": "322da5f0910d8aa0b25fa65ffccaba68dbddb890",
+            "url": "https://api.github.com/repos/symfony/filesystem/zipball/c709670bf64721202ddbe4162846f250735842c0",
+            "reference": "c709670bf64721202ddbe4162846f250735842c0",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2016-06-29 05:41:56",
+        "time": "2017-05-28T14:08:56+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.1-dev"
+                "dev-master": "3.3-dev"
             }
         },
         "installation-source": "dist",
