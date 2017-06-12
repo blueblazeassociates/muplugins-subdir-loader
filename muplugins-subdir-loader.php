@@ -11,7 +11,7 @@
  * Plugin Name:       MU Plugins Subdirectory Loader
  * Plugin URI:        https://github.com/blueblazeassociates/muplugins-subdir-loader
  * Description:       Enables the loading of plugins sitting in mu-plugins (as folders). This plugin has to installed as a 'must-use' plugin.
- * Version:           0.1.4
+ * Version:           0.1.5
  * Author:            Blue Blaze Associates
  * Author URI:        http://www.blueblazeassociates.com
  * License:           GPL v2 or later
