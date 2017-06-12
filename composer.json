@@ -3,20 +3,22 @@
   "description" : "MU plugins subdirectory loader.  Enables the loading of plugins sitting in mu-plugins (as folders).",
   "type"        : "wordpress-muplugin",
   "homepage"    : "https://github.com/blueblazeassociates/subdir-loader",
-  "license"     : "GPL-2.0+",
+  "license" : [
+    "GPL-2.0+"
+  ],
   "authors" : [{
-    "name"     : "Richard Tape",
-    "homepage" : "http://richardtape.com/",
-    "role"     : "Author/Creator"
-  }, {
-    "name"     : "Centre for Teaching, Learning and Technology",
-    "homepage" : "http://ctlt.ubc.ca/",
-    "role"     : "Author/Creator"
-  }, {
-    "name"     : "Ed Gifford",
-    "homepage" : "http://www.blueblazeassociates.com",
-    "role"     : "Composer-fier",
-    "email"    : "egifford@blueblazeassociates.com"
+      "name"     : "Richard Tape",
+      "homepage" : "http://richardtape.com/",
+      "role"     : "Author/Creator"
+    }, {
+      "name"     : "Centre for Teaching, Learning and Technology",
+      "homepage" : "http://ctlt.ubc.ca/",
+      "role"     : "Author/Creator"
+    }, {
+      "name"     : "Ed Gifford",
+      "homepage" : "http://www.blueblazeassociates.com",
+      "role"     : "Composer-fier",
+      "email"    : "egifford@blueblazeassociates.com"
     }
   ],
   "keywords" : [
@@ -24,10 +26,15 @@
   "replace" : {
   },
   "require" : {
+    "php"                : ">=5.6.0",
     "symfony/filesystem" : ">=2.1.0" 
   },
+  "require-dev" : {
+  },
+  "suggest" : {
+  },
   "config" : {
-    "php"        : "5.6.*",
+    "php"        : "5.6.0",
     "vendor-dir" : "muplugins-subdir-loader__vendor"
   }
 }
