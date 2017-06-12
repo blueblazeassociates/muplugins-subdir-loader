@@ -10,14 +10,15 @@
 /**
  * Plugin Name:       MU Plugins Subdirectory Loader
  * Plugin URI:        https://github.com/blueblazeassociates/muplugins-subdir-loader
- * Description:       Enables the loading of plugins sitting in mu-plugins (as folders).  This plugin has to installed as a 'must-use' plugin.
+ * Description:       Enables the loading of plugins sitting in mu-plugins (as folders). This plugin has to installed as a 'must-use' plugin.
  * Version:           0.1.4
  * Author:            Blue Blaze Associates
  * Author URI:        http://www.blueblazeassociates.com
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.html
  * GitHub Plugin URI: https://github.com/blueblazeassociates/muplugins-subdir-loader
- * Requires WP:       4.5
+ * GitHub Branch:     master
+ * Requires WP:       4.7
  * Requires PHP:      5.6
  */
 
